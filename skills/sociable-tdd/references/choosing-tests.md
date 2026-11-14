@@ -26,7 +26,7 @@ Describe what the test exercises and what risk it covers when the team's labels 
 
 ## Optional check for weak assertions
 
-When reviewing a risky rule, run the focused tests in a temporary copy against a change that would break the behavior. For example, change `>=` to `>` and see whether a test catches the difference at the boundary value. Restore the production code afterward. If the change matters to a caller and the suite passes, add or strengthen a behavior test. If it has no observable effect, leave the tests alone. Use a mutation testing tool when broader sampling is useful. Keep this check outside the normal Red, Green, Refactor loop. [Stryker on mutation testing](https://stryker-mutator.io/docs/)
+When reviewing a risky rule or a weak assertion, you can run a targeted mutation check. First confirm the focused tests pass, then rerun them in a temporary copy with a change that would break the behavior. For example, change `>=` to `>` and see whether a test catches the difference at the boundary value. Discard the temporary change afterward. If the tests still pass and the change matters to a caller, add or strengthen a behavior test. If it has no observable effect, leave the tests alone. Use a mutation testing tool when broader sampling is useful. Keep this check outside the normal Red, Green, Refactor loop. [Stryker on mutation testing](https://stryker-mutator.io/docs/)
 
 ## Example: Show a message when a photo is missing
 

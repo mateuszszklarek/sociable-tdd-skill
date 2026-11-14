@@ -18,9 +18,9 @@ The demo substitutes `URLSessionProtocol` at the network boundary. The stub retu
 
 The repository starts with both variants passing a title `String` internally. To reproduce the refactor, run both schemes first and make the following changes in a temporary branch or copy.
 
-1. In each variant, rename `fetchPhotoTitle` to `fetchPhoto`. Change the completion to take a `Photo` and return the decoded object. Have the controller forward that object to `present(photo:in:)` and let the presenter read its title. In the mockist variant, update the service and presenter protocols with the same signatures.
-2. Run both schemes with the original tests. The classic suite still runs and verifies the displayed title. The mockist suite fails to compile because its tests and spies use the old signatures.
-3. Update the mockist service spy to supply a `Photo` and the presenter spy to record it. Adjust the controller test to supply a photo and assert its title, the service test to read the returned photo's title, and the presenter test to pass a photo. Run both schemes again. The requested photo, sample response, and displayed title are the same throughout.
+1. In each variant, rename `fetchPhotoTitle` to `fetchPhoto`. Change the completion handler to receive a `Photo` and pass it the decoded object. Have the controller forward that object to `present(photo:in:)` and let the presenter read its title. In the mockist variant, update the service and presenter protocols with the same signatures.
+2. Run both schemes with the original tests. The classic suite still runs and verifies the displayed title. The mockist suite fails to compile because its spies still use the old signatures. The tests also depend on those signatures.
+3. Update the mockist service spy to record a completion handler that takes a `Photo`. Update the presenter spy to record the photo it receives. Adjust the controller test to supply a photo and assert its title, the service test to read the returned photo's title, and the presenter test to pass a photo. Run both schemes again. The requested photo, sample response, and displayed title are the same throughout.
 
 | Files affected by this refactor | Mockist variant | Sociable variant |
 | --- | --- | --- |

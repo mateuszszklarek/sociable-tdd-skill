@@ -32,7 +32,7 @@ Name doubles for what they do in the scenario, regardless of the library that cr
 
 ## Optional Git checkpoints
 
-If the branch workflow permits checkpoints, save the runnable failing test, the change that makes it pass, and any subsequent refactor as separate commits. For example:
+If the user requests commits and the branch workflow permits checkpoints, save the runnable failing test, the change that makes it pass, and any subsequent refactor as separate commits. For example:
 
 - `red: specify photo title display`
 - `green: render the fetched title`

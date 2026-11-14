@@ -61,7 +61,7 @@ Copy both skill folders into your project. Keep each folder intact so its suppor
 | [`define-behavior`](skills/define-behavior/) | `.agents/skills/define-behavior/` | `.claude/skills/define-behavior/` |
 | [`sociable-tdd`](skills/sociable-tdd/) | `.agents/skills/sociable-tdd/` | `.claude/skills/sociable-tdd/` |
 
-Start with **Define Behavior**. It checks the project for answers, asks about decisions that affect what a user or caller should observe, and writes the handoff. When you ask it to implement the change, it continues with **Sociable TDD**, which runs the test cycle. If you already have agreed behavior, you can start with `$sociable-tdd` in Codex or `/sociable-tdd` in Claude Code.
+Start with **Define Behavior**. It reads the relevant project files and asks about unresolved behavior. It can suggest options. You decide how the software should work and which cases are in scope. The skill records those decisions as testable scenarios. If your request includes implementation, it passes those scenarios to **Sociable TDD** in the same session. Sociable TDD handles the testing steps. If you already have agreed behavior, you can start with `$sociable-tdd` in Codex or `/sociable-tdd` in Claude Code.
 
 These examples use Codex syntax. In Claude Code, replace `Use $define-behavior to` with `/define-behavior`.
 
@@ -89,7 +89,7 @@ still display the title returned by the API.
 
 ## Explore the photo app
 
-The Swift demo has two variants of the same screen. The classic test checks the title displayed to the user. The mockist controller test checks calls between collaborators. The [walkthrough](skills/sociable-tdd/references/photo-app.md) shows what happens to both tests when the service starts passing a `Photo` instead of a title string.
+The Swift demo has two variants of the same screen. The classic test checks the title displayed to the user. The mockist controller test checks calls between collaborators. The [walkthrough](skills/sociable-tdd/references/photo-app.md) shows what happens to both suites when the service starts passing a `Photo` instead of a title string.
 
 Open [ExampleApp.xcodeproj](examples/PhotoApp/ExampleApp.xcodeproj/) in Xcode 27.2, select an iOS Simulator and either the `ClassicStyleApp` or `MockistStyleApp` scheme, then press Command-U to run its Swift Testing suite.
 
