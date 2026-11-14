@@ -7,6 +7,10 @@ description: Use test-driven development for software features and bug fixes wit
 
 Test one promised behavior through an interface its consumer uses. A single test can exercise several real collaborators. Give each test fresh state so it runs independently. Add a test for each distinct behavior or regression. Let existing tests cover helpers introduced during refactoring.
 
+Before writing tests or production code, require an agreed behavior brief covering the trigger, observable outcomes, and relevant cases or invariants. If the request and project already settle those decisions, use them as the brief. Otherwise, load [Define Behavior](../define-behavior/SKILL.md) from the adjacent skill folder or via skill discovery and resolve the open questions first. If the companion skill is unavailable, inspect the relevant requirements and tests, then ask about any unresolved decisions that would change the expected behavior or scope. Return to clarification if a new material behavior decision comes up during implementation.
+
+For a refactor that preserves behavior, establish a passing baseline with the relevant behavior tests. Add a characterization test if needed, then rerun the same tests after the refactor. For new or corrected behavior, use the cycle below.
+
 1. **Choose a scenario.** List the behaviors the change needs to support and turn one into a runnable test. Derive the expected outcome from the requirement or an independent example.
 2. **Red.** Before implementing the change, run the test and see it fail for the expected behavioral reason. If it passes, check whether the behavior already works or the test misses it.
 3. **Green.** Make the smallest correct change. Run the focused test and relevant existing tests. Preserve the agreed behavior assertions.

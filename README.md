@@ -54,43 +54,37 @@ flowchart LR
 
 ## Install and use
 
-Copy the [`sociable-tdd` skill folder](skills/sociable-tdd/) into the project where you want to use it. Copy the whole folder so the references stay alongside `SKILL.md`.
+Copy both skill folders into your project. Keep each folder intact so its supporting files stay with it.
 
-| Agent | Resulting skill path | Start your prompt with |
+| Skill folder | Codex destination | Claude Code destination |
 | --- | --- | --- |
-| Codex | `.agents/skills/sociable-tdd/SKILL.md` | `Use $sociable-tdd to…` |
-| Claude Code | `.claude/skills/sociable-tdd/SKILL.md` | `/sociable-tdd` |
+| [`define-behavior`](skills/define-behavior/) | `.agents/skills/define-behavior/` | `.claude/skills/define-behavior/` |
+| [`sociable-tdd`](skills/sociable-tdd/) | `.agents/skills/sociable-tdd/` | `.claude/skills/sociable-tdd/` |
 
-Open your agent in that project. Describe the situation, what the user or caller should observe, and what you want the agent to verify. These prompts use Codex syntax. In Claude Code, replace `Use $sociable-tdd to` with `/sociable-tdd`.
+Start with **Define Behavior**. It checks the project for answers, asks about decisions that affect what a user or caller should observe, and writes the handoff. When you ask it to implement the change, it continues with **Sociable TDD**, which runs the test cycle. If you already have agreed behavior, you can start with `$sociable-tdd` in Codex or `/sociable-tdd` in Claude Code.
 
-**Feature · Handle a missing photo**
+These examples use Codex syntax. In Claude Code, replace `Use $define-behavior to` with `/define-behavior`.
+
+**Feature · Show a photo title**
 
 ```text
-Use $sociable-tdd to handle a missing photo. When a user opens a photo and
-the API returns HTTP 404, the details screen should show "Photo not found".
-Stub the network response and assert the message on the screen. Run the
-test before implementation to confirm the message is missing, then make it
-pass and rerun the existing photo tests.
+Use $define-behavior to work out what users should see when they open a
+photo and implement the agreed behavior. On success, show the photo title.
 ```
 
 **Bug fix · Persist a renamed draft**
 
 ```text
-Use $sociable-tdd to fix draft renaming. A draft named "First draft" is
-renamed to "Final draft" and saved. When a fresh reader reopens that draft,
-its title should be "Final draft". First reproduce the old title with a
-failing test through the normal save and reopen interfaces. Use isolated
-storage for the test, then fix the bug and rerun it.
+Use $define-behavior to clarify and fix this bug. I rename "First draft"
+to "Final draft" and save it, but reopening the draft shows the old title.
 ```
 
 **Refactor · Change the internal photo handoff**
 
 ```text
-Use $sociable-tdd to refactor the classic photo flow so the controller
-passes a decoded Photo to the presenter. Opening an existing photo must
-still display the title returned by the API. Run the existing screen test
-before the refactor, then rerun it with the same JSON fixture and title
-assertion after the change.
+Use $define-behavior to clarify and refactor the classic photo flow.
+Pass a decoded Photo to the presenter. Opening an existing photo should
+still display the title returned by the API.
 ```
 
 ## Explore the photo app
