@@ -1,6 +1,6 @@
 ---
 name: sociable-tdd
-description: Use test-driven development for software features and bug fixes with fast, reliable sociable tests. Use for Red–Green–Refactor, choosing test doubles, and reviewing brittle or flaky behavior tests.
+description: Use test-driven development for software features, bug fixes, and behavior-preserving refactors with fast, reliable sociable tests. Use for Red–Green–Refactor, choosing test doubles, and reviewing brittle or flaky behavior tests.
 ---
 
 # Sociable TDD
