@@ -8,6 +8,12 @@ Keep full browser and simulator UI tests outside the fast loop by default. When 
 
 Name the scenario for the behavior it protects. Use an expectation from the requirement or an independently worked example. A failing assertion about the intended behavior establishes Red. A broken fixture or build failure needs to be resolved first. When refactoring existing behavior without prior coverage, a passing characterization test can establish a baseline.
 
+## Design for testability
+
+Prefer an existing interface that callers already use and that exposes the promised outcome. Keep the interface focused on what callers need and put related rules where they can change together. Keep helpers internal and use existing behavior tests to cover them. When a slow or nondeterministic dependency needs control, let the caller supply it at an existing boundary or add the smallest boundary needed.
+
+For a weather lookup, exercise the lookup through the interface the screen uses. Supply controlled HTTP responses and let the real location handling and forecast mapping run. If the promise depends on how the screen displays the result, verify that part through the UI.
+
 ## Keep the fast suite independent
 
 Use fresh mutable fixtures, a per-test storage namespace, and per-test doubles. Use a real local resource when it is fast and preserves the behavior you need to verify. Pass explicit time or random inputs where they affect the result. Await observable completion or drive a scheduler local to the test. If order or concurrency might affect results, run the tests alone and together, and vary the order when the runner supports it.

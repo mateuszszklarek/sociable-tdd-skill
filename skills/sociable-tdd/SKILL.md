@@ -13,10 +13,10 @@ Once the behavior is agreed, choose the test design and implementation independe
 
 For a refactor that preserves behavior, run the relevant tests before editing and confirm they pass. If coverage is missing, first add a passing test that captures the current behavior. Rerun those same tests after the refactor. For new or corrected behavior, use the cycle below.
 
-1. **Choose a scenario.** List the behaviors the change needs to support and turn one into a runnable test. Use the agreed behavior to set the expected outcome. Use an independent example to calculate the expected result when helpful.
+1. **Choose a scenario.** List the behaviors the change needs to support and turn one into a runnable test. Prefer an existing consumer interface that exposes the agreed outcome. If you need to introduce an interface or control a dependency to make the behavior testable, read [Design for testability](references/workflow.md#design-for-testability). Use the agreed behavior to set the expected outcome. Use an independent example to calculate the expected result when helpful.
 2. **Red.** Run the test before implementation. Confirm it fails because the expected behavior is missing or incorrect. Fix setup or build failures and rerun it. If it passes, check whether the behavior already works or the test misses it.
 3. **Green.** Make the smallest correct change. Run the focused test and relevant existing tests. Preserve the agreed behavior assertions.
-4. **Refactor.** Improve the design in small steps and rerun the tests. Let the same assertions protect the behavior as internal classes and methods change.
+4. **Refactor.** Look for a concrete design improvement in the code you just changed. Use the [testable interface guidance](references/workflow.md#design-for-testability) if its interface or dependencies make the code hard to change or test. If you refactor, take small steps and rerun the same behavior tests with their assertions intact.
 5. **Repeat.** Return to the scenario list. Add cases covered by the agreed behavior and take the next unverified behavior through the cycle.
 
 Assert an observable result, such as a returned value, rendered title, or durable write. Verify an interaction only when the interaction itself is part of the promise.
@@ -25,7 +25,7 @@ Use real collaborators when they keep tests fast and reliable. Control time and 
 
 Use a temporary probe to learn how an unfamiliar API or algorithm behaves. Record what you learned and discard the probe once it answers the question. Retain tests for lasting behavior and focused checks for integration risks.
 
-Report the behavior verified and the test results you observed. For new or corrected behavior, include one Red → Green pair with the scenario, failing assertion, and passing rerun. Name the interface the fast suite exercises and explain what each new double replaces and why. For a user-facing change, report the outcome of any separate UI smoke check or what prevented it.
+Before reporting completion, check the result against the agreed scenarios and run the project's usual verification checks for the affected code. For user-facing changes, smoke-check a representative path through the running UI when practical. Report the behavior verified, the checks and results you observed, and any verification still open. For new or corrected behavior, include one Red → Green pair with the scenario, failing assertion, and passing rerun. Name the interface the fast suite exercises and explain what each new double replaces and why.
 
 ## References
 
