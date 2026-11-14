@@ -1,6 +1,12 @@
 # Sociable TDD
 
-Sociable TDD is a language-neutral agent skill for building features and fixing bugs with fast, reliable tests. It guides the agent through Red, Green, and Refactor, starting with a test of what a caller or user can observe.
+<img src="assets/logo.svg" alt="" width="144">
+
+**Fast feedback and shareable tests for agentic coding.**
+
+A test earns its place when it catches a regression you care about. A test that only checks which helper was called can fail during a safe refactor and still pass when the feature breaks. Every such test adds code that people and agents have to maintain.
+
+Sociable TDD is a language-neutral skill that guides coding agents through Red, Green, and Refactor. Start with behavior a caller or user can observe. Let real components work together where they can run quickly and reliably. Fast tests shorten the feedback loop, and stable assertions let people and agents share the same suite as the code evolves.
 
 ## What makes a test sociable?
 
@@ -34,7 +40,7 @@ flowchart LR
 - **Refactor with less test churn.** Passing a `Photo` instead of a title string changes an internal handoff. In this demo, that change would affect three mockist test files and two spies. The sociable test can keep the same response and title assertion.
 - **Catch failures between real components.** The sociable test exercises decoding, presentation, and rendering together. A presenter spy can record the expected call even if the real presenter would fail to display the title.
 - **Maintain fewer doubles.** Keep real collaborators where they are fast and predictable. Control the transport boundary to make responses repeatable and keep network variability out of the test.
-- **Spend less time on test rewrites.** Stable assertions make it easier to reshape code before adding features. Fewer fixture and expectation edits can also reduce the tokens an agent spends on test maintenance.
+- **Spend fewer tokens maintaining tests.** When a refactor preserves behavior, tests at the public interface can often stay as written. That means fewer fixtures and mock expectations for an agent to read, update, and debug.
 
 ## Install and use
 
