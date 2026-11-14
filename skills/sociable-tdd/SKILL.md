@@ -19,3 +19,9 @@ Use real collaborators when they keep tests fast and reliable. Control time and 
 Use a temporary probe to learn how an unfamiliar API or algorithm behaves. Record what you learned and discard the probe once it answers the question. Retain tests for lasting behavior and focused checks for integration risks.
 
 Report the behavior verified, the test results you observed, and the reason for any new double.
+
+## References
+
+- For fixture isolation, measuring feedback time, or choosing a test double, read [Reliable tests and workflow](references/workflow.md).
+- For edge cases, exploratory probes, or deciding which integration checks to keep, read [Choosing tests](references/choosing-tests.md).
+- For replacing assertions about internal calls or keeping tests stable through a refactor, read [Photo app example](references/photo-app.md).
