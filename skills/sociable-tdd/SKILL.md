@@ -24,5 +24,5 @@ Report the behavior verified, the test results you observed, and the reason for 
 ## References
 
 - For fixture isolation, measuring feedback time, or choosing a test double, read [Reliable tests and workflow](references/workflow.md).
-- For edge cases, exploratory probes, or deciding which integration checks to keep, read [Choosing tests](references/choosing-tests.md).
+- For edge cases, exploratory probes, deciding which integration checks to keep, or checking whether an assertion catches a plausible regression, read [Choosing tests](references/choosing-tests.md).
 - For replacing assertions about internal calls or keeping tests stable through a refactor, read [Photo app example](references/photo-app.md).
