@@ -40,7 +40,8 @@ flowchart LR
 - **Refactor with less test churn.** Passing a `Photo` instead of a title string changes an internal handoff. In this demo, that change would affect three mockist test files and two spies. The sociable test can keep the same response and title assertion.
 - **Catch failures between real components.** The sociable test exercises decoding, presentation, and rendering together. A presenter spy can record the expected call even if the real presenter would fail to display the title.
 - **Maintain fewer doubles.** Keep real collaborators where they are fast and predictable. Control the transport boundary to make responses repeatable and keep network variability out of the test.
-- **Spend fewer tokens maintaining tests.** When a refactor preserves behavior, tests at the public interface can often stay as written. That means fewer fixtures and mock expectations for an agent to read, update, and debug.
+- **Spend less time rewriting tests.** Tests at the public interface can often stay as written through a refactor. People and agents can rerun the suite and get back to the feature or bug fix sooner.
+- **Spend fewer tokens on test maintenance.** Fewer fixtures and mock expectations mean less test setup for an agent to read and fewer edits for it to generate.
 
 ## Install and use
 
