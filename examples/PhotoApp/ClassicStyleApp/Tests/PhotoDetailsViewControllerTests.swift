@@ -1,41 +1,20 @@
 @testable import ClassicStyleApp
-import XCTest
+import Foundation
+import Testing
 
-class PhotoDetailsViewControllerTests: TestCase {
+@MainActor
+struct PhotoDetailsViewControllerTests {
+    @Test func openingThePhotoDisplaysItsTitle() {
+        let urlSession = URLSessionStub(
+            expectedURL: URL(string: "https://jsonplaceholder.typicode.com/photos/2")!,
+            json: """
+            {"id": 2, "title": "Given photo title"}
+            """
+        )
+        let screen = PhotoDetailsViewController(id: 2, urlSession: urlSession)
 
-    var sut: PhotoDetailsViewController!
-    var urlSessionSpy: URLSessionSpy!
+        screen.loadViewIfNeeded()
 
-    override func setUp() {
-        super.setUp()
-        urlSessionSpy = .init()
-        sut = .init(id: 2, urlSession: urlSessionSpy)
+        #expect(screen.view.visibleLabelTexts.contains("Given photo title"))
     }
-
-    override func tearDown() {
-        sut = nil
-        urlSessionSpy = nil
-        super.tearDown()
-    }
-
-    func testViewIsLoaded_WhenFetchingPhotoDetailsSucceeds_PresentsPhotoTitleCorrectly() {
-        sut.viewDidLoad()
-
-        urlSessionSpy.dataTaskCalled?.completionHandler(stubbedJSON.data(using: .utf8)!, nil, nil)
-
-        XCTAssertNotNil(sut.view.find(for: "Given photo title", by: \UILabel.text))
-    }
-
-    private var stubbedJSON: String {
-        """
-        {
-            "albumId": 1,
-            "id": 1,
-            "title": "Given photo title",
-            "url": "https://via.placeholder.com/600/92c952",
-            "thumbnailUrl": "https://via.placeholder.com/150/92c952"
-        }
-        """
-    }
-
 }

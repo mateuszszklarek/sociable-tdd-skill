@@ -5,12 +5,13 @@ description: Use test-driven development for software features and bug fixes wit
 
 # Sociable TDD
 
-Test one promised behavior through an interface its consumer uses. A single test can exercise several real collaborators. Give each test fresh state so it runs independently.
+Test one promised behavior through an interface its consumer uses. A single test can exercise several real collaborators. Give each test fresh state so it runs independently. Add a test for each distinct behavior or regression. Let existing tests cover helpers introduced during refactoring.
 
 1. **Choose a scenario.** List the behaviors the change needs to support and turn one into a runnable test. Derive the expected outcome from the requirement or an independent example.
 2. **Red.** Before implementing the change, run the test and see it fail for the expected behavioral reason. If it passes, check whether the behavior already works or the test misses it.
 3. **Green.** Make the smallest correct change. Run the focused test and relevant existing tests. Preserve the agreed behavior assertions.
 4. **Refactor.** Improve the design in small steps and rerun the tests. Let the same assertions protect the behavior as internal classes and methods change.
+5. **Repeat.** Return to the scenario list. Add cases you discovered and take the next unverified behavior through the cycle.
 
 Assert an observable result, such as a returned value, rendered title, or durable write. Verify an interaction only when the interaction itself is part of the promise.
 

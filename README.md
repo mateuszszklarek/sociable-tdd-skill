@@ -39,7 +39,7 @@ flowchart LR
 
 - **Refactor with less test churn.** Passing a `Photo` instead of a title string changes an internal handoff. In this demo, that change would affect three mockist test files and two spies. The sociable test can keep the same response and title assertion.
 - **Catch failures between real components.** The sociable test exercises decoding, presentation, and rendering together. A presenter spy can record the expected call even if the real presenter would fail to display the title.
-- **Maintain fewer doubles.** Keep real collaborators where they are fast and predictable. Control the transport boundary to make responses repeatable and keep network variability out of the test.
+- **Maintain fewer doubles.** Keep real collaborators where they are fast and predictable. The demo stubs the transport so the tests run without network access.
 - **Spend less time rewriting tests.** Tests at the public interface can often stay as written through a refactor. People and agents can rerun the suite and get back to the feature or bug fix sooner.
 - **Spend fewer tokens on test maintenance.** Fewer fixtures and mock expectations mean less test setup for an agent to read and fewer edits for it to generate.
 
@@ -55,7 +55,7 @@ In Codex, start a prompt with `Use $sociable-tdd to…`. In Claude Code, invoke 
 
 The Swift demo has two variants of the same screen. The classic test checks the title displayed to the user. The mockist controller test checks calls between collaborators. The [walkthrough](skills/sociable-tdd/references/photo-app.md) shows what happens to both tests when the service starts passing a `Photo` instead of a title string.
 
-Open [ExampleApp.xcodeproj](examples/PhotoApp/ExampleApp.xcodeproj/) in Xcode and select either the `ClassicStyleApp` or `MockistStyleApp` scheme to inspect or run its tests.
+Open [ExampleApp.xcodeproj](examples/PhotoApp/ExampleApp.xcodeproj/) in Xcode 27.2, select an iOS Simulator and either the `ClassicStyleApp` or `MockistStyleApp` scheme, then press Command-U to run its Swift Testing suite.
 
 ## Further reading
 

@@ -1,16 +1,17 @@
 import UIKit
 
 class DetailsView: UIView {
-    let headerTitleLabel = UILabel()
+    private let headerTitleLabel = UILabel()
     let titleLabel = UILabel()
 
     init() {
         super.init(frame: .zero)
         headerTitleLabel.text = "Photo title:"
-        headerTitleLabel.textColor = .white
+        backgroundColor = .systemBackground
+        headerTitleLabel.textColor = .label
         headerTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        titleLabel.textColor = .white
+        titleLabel.textColor = .label
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.numberOfLines = 0
         titleLabel.text = "N/A"

@@ -1,28 +1,28 @@
 import Foundation
 
+@MainActor
 protocol PhotoServiceProtocol {
     func fetchPhotoTitle(id: Int, completion: @escaping (String) -> Void)
 }
 
-class PhotoService: PhotoServiceProtocol {
+@MainActor
+final class PhotoService: PhotoServiceProtocol {
+    private let urlSession: any URLSessionProtocol
 
-    private let urlSession: URLSessionProtocol
-
-    init(urlSession: URLSessionProtocol) {
+    init(urlSession: any URLSessionProtocol) {
         self.urlSession = urlSession
     }
 
     func fetchPhotoTitle(id: Int, completion: @escaping (String) -> Void) {
         let url = URL(string: "https://jsonplaceholder.typicode.com/photos/\(id)")!
-        let dataTask = urlSession.dataTask(with: url) { data, response, error in
-            if let data = data {
-                let photo = try! JSONDecoder().decode(Photo.self, from: data)
-                completion(photo.title)
+        let task = urlSession.dataTask(with: url) { data, response, _ in
+            guard let data, let response = response as? HTTPURLResponse,
+                  (200..<300).contains(response.statusCode),
+                  let photo = try? JSONDecoder().decode(Photo.self, from: data) else {
+                return
             }
-
+            completion(photo.title)
         }
-
-        dataTask.resume()
+        task.resume()
     }
-
 }
