@@ -25,10 +25,10 @@ Use real collaborators when they keep tests fast and reliable. Control time and 
 
 Use a temporary probe to learn how an unfamiliar API or algorithm behaves. Record what you learned and discard the probe once it answers the question. Retain tests for lasting behavior and focused checks for integration risks.
 
-Report the behavior verified, the test results you observed, and the reason for any new double.
+Report the behavior verified and the test results you observed. For new or corrected behavior, include one Red → Green pair with the scenario, failing assertion, and passing rerun. Name the interface the fast suite exercises and explain what each new double replaces and why. For a user-facing change, report the outcome of any separate UI smoke check or what prevented it.
 
 ## References
 
-- For fixture isolation, measuring feedback time, or choosing a test double, read [Reliable tests and workflow](references/workflow.md).
+- For UI assertions, fixture isolation, measuring feedback time, or choosing a test double, read [Reliable tests and workflow](references/workflow.md).
 - For edge cases, exploratory probes, deciding which integration checks to keep, or checking whether an assertion catches a plausible regression, read [Choosing tests](references/choosing-tests.md).
 - For replacing assertions about internal calls or keeping tests stable through a refactor, read [Photo app example](references/photo-app.md).

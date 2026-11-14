@@ -2,7 +2,9 @@
 
 ## Observe behavior through the consumer interface
 
-Choose the smallest stable interface that exposes the promise. For a screen, exercise the normal lifecycle or action and observe the text, navigation, or accessibility result. For a write that must persist, read through a fresh consumer of the same store. A writer's cached state can make an unsaved change appear successful.
+Drive Red → Green through the fastest stable interface that exposes the agreed outcome. A model or handler can exercise behavior shared with the UI. Use a fast DOM or component test when it directly exposes what the user can see or do. Prefer assertions about visibility, actions, text, and accessible roles over exact markup. For a write that must persist, read through a fresh consumer of the same store. A writer's cached state can make an unsaved change appear successful.
+
+Keep full browser and simulator UI tests outside the fast loop by default. When practical, check one representative path through the running UI separately to verify that the controls and visible result are wired up. A manual smoke check is sufficient when it verifies that path.
 
 Name the scenario for the behavior it protects. Use an expectation from the requirement or an independently worked example. A failing assertion about the intended behavior establishes Red. A broken fixture or build failure needs to be resolved first. When refactoring existing behavior without prior coverage, a passing characterization test can establish a baseline.
 
