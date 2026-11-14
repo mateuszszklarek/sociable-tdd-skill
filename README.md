@@ -10,7 +10,16 @@ Sociable TDD is a language-neutral skill that guides coding agents through Red, 
 
 ## What makes a test sociable?
 
-A sociable test lets real collaborators work together. It uses a test double when a dependency makes feedback slow, unreliable, or hard to isolate between tests. This is common in **classic** or **classical** TDD, often associated with the **Chicago school**. Fowler also uses **Detroit** for the classical style. **Mockist** TDD, associated with the **London school**, favors **solitary tests** that replace collaborators with test doubles and often verify how they interact. [Fowler on sociable and solitary tests](https://martinfowler.com/bliki/UnitTest.html) · [Fowler on classical and mockist TDD](https://martinfowler.com/articles/mocksArentStubs.html) · [Cooper on the London and Chicago schools](https://www.youtube.com/watch?v=vOO3hulIcsY&t=178s)
+A sociable test exercises one behavior with real collaborators. It uses a test double at a boundary when the real dependency would make feedback slow, unreliable, or hard to isolate between tests.
+
+| | Classic style | Mockist style |
+| --- | --- | --- |
+| Also called | Classical TDD, Chicago school, Detroit school (Fowler) | London school |
+| Typical test | Sociable | Solitary |
+| Collaborators | Keep real collaborators where they run quickly and predictably. | Replace collaborators with test doubles to isolate the unit under test. |
+| Typical assertion | Check an observable outcome, such as the title shown on screen. | Often check an expected interaction, such as whether the presenter received the title. |
+
+[Fowler on sociable and solitary tests](https://martinfowler.com/bliki/UnitTest.html) · [Fowler on classical and mockist TDD](https://martinfowler.com/articles/mocksArentStubs.html) · [Cooper on the London and Chicago schools](https://www.youtube.com/watch?v=vOO3hulIcsY&t=178s)
 
 ## Solitary and sociable tests in the photo app
 
@@ -39,17 +48,50 @@ flowchart LR
 
 - **Refactor with less test churn.** Passing a `Photo` instead of a title string changes an internal handoff. In this demo, that change would affect three mockist test files and two spies. The sociable test can keep the same response and title assertion.
 - **Catch failures between real components.** The sociable test exercises decoding, presentation, and rendering together. A presenter spy can record the expected call even if the real presenter would fail to display the title.
-- **Maintain fewer doubles.** Keep real collaborators where they are fast and predictable. The demo stubs the transport so the tests run without network access.
+- **Maintain fewer doubles.** Keep real collaborators where they are fast and predictable. The demo supplies literal JSON through a URL session stub, so the test assertions are independent of the live API.
 - **Spend less time rewriting tests.** Tests at the public interface can often stay as written through a refactor. People and agents can rerun the suite and get back to the feature or bug fix sooner.
 - **Spend fewer tokens on test maintenance.** Fewer fixtures and mock expectations mean less test setup for an agent to read and fewer edits for it to generate.
 
 ## Install and use
 
-Copy the entire [`skills/sociable-tdd`](skills/sociable-tdd/) directory into your project's `.agents/skills/` for Codex or `.claude/skills/` for Claude Code. Keep `SKILL.md` and its `references/` directory together. This installs the skill and its guides. The Swift demo is available separately in this repository.
+Copy the [`sociable-tdd` skill folder](skills/sociable-tdd/) into the project where you want to use it. Copy the whole folder so the references stay alongside `SKILL.md`.
 
-In Codex, start a prompt with `Use $sociable-tdd to…`. In Claude Code, invoke `/sociable-tdd` and describe the behavior you want to add or fix.
+| Agent | Resulting skill path | Start your prompt with |
+| --- | --- | --- |
+| Codex | `.agents/skills/sociable-tdd/SKILL.md` | `Use $sociable-tdd to…` |
+| Claude Code | `.claude/skills/sociable-tdd/SKILL.md` | `/sociable-tdd` |
 
-> Add a missing-photo message to the details screen. Show that the test fails for the expected reason before changing production code.
+Open your agent in that project. Describe the situation, what the user or caller should observe, and what you want the agent to verify. These prompts use Codex syntax. In Claude Code, replace `Use $sociable-tdd to` with `/sociable-tdd`.
+
+**Feature · Handle a missing photo**
+
+```text
+Use $sociable-tdd to handle a missing photo. When a user opens a photo and
+the API returns HTTP 404, the details screen should show "Photo not found".
+Stub the network response and assert the message on the screen. Run the
+test before implementation to confirm the message is missing, then make it
+pass and rerun the existing photo tests.
+```
+
+**Bug fix · Persist a renamed draft**
+
+```text
+Use $sociable-tdd to fix draft renaming. A draft named "First draft" is
+renamed to "Final draft" and saved. When a fresh reader reopens that draft,
+its title should be "Final draft". First reproduce the old title with a
+failing test through the normal save and reopen interfaces. Use isolated
+storage for the test, then fix the bug and rerun it.
+```
+
+**Refactor · Change the internal photo handoff**
+
+```text
+Use $sociable-tdd to refactor the classic photo flow so the controller
+passes a decoded Photo to the presenter. Opening an existing photo must
+still display the title returned by the API. Run the existing screen test
+before the refactor, then rerun it with the same JSON fixture and title
+assertion after the change.
+```
 
 ## Explore the photo app
 
