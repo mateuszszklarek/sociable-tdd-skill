@@ -1,5 +1,3 @@
-@testable import MockistStyleApp
-
 @MainActor
 final class PhotoServiceSpy: PhotoServiceProtocol {
     private(set) var fetchPhotoTitleCalls: [(id: Int, completion: (String) -> Void)] = []

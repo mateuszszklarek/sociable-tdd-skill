@@ -91,7 +91,7 @@ still display the title returned by the API.
 
 The Swift demo has two variants of the same screen. The classic test checks the title displayed to the user. The mockist controller test checks calls between collaborators. The [walkthrough](skills/sociable-tdd/references/photo-app.md) shows what happens to both suites when the service starts passing a `Photo` instead of a title string.
 
-Open [ExampleApp.xcodeproj](examples/PhotoApp/ExampleApp.xcodeproj/) in Xcode 27.2, select an iOS Simulator and either the `ClassicStyleApp` or `MockistStyleApp` scheme, then press Command-U to run its Swift Testing suite.
+Open [ExampleApp.xcodeproj](examples/PhotoApp/ExampleApp.xcodeproj/) in Xcode 27.2, select an iOS Simulator and either the `ClassicStyleApp` or `MockistStyleApp` scheme, then press Command-U to run its Swift Testing suite. Both suites launch a shared test host with an empty screen. Each suite compiles its variant’s production sources, excluding the app entry point. Tests that fetch photos use controlled responses.
 
 ## Further reading
 

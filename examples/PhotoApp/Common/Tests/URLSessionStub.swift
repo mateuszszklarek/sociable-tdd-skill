@@ -1,8 +1,3 @@
-#if CLASSIC_STYLE
-@testable import ClassicStyleApp
-#else
-@testable import MockistStyleApp
-#endif
 import Foundation
 import Testing
 

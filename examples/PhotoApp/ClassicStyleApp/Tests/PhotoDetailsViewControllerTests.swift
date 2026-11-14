@@ -1,4 +1,3 @@
-@testable import ClassicStyleApp
 import Foundation
 import Testing
 

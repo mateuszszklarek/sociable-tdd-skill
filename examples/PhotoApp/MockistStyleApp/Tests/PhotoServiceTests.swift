@@ -1,4 +1,3 @@
-@testable import MockistStyleApp
 import Foundation
 import Testing
 
