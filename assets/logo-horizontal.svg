@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="664" height="256" viewBox="0 0 664 256" role="img" aria-labelledby="title">
+  <title id="title">Sociable TDD</title>
+  <style>@media (prefers-color-scheme: dark) { .red { fill: #FF7383 } .green { fill: #47D5A1 } .refactor { fill: #8BA9FF } .monogram { fill: #E6EDFF } }</style>
+  <path class="red" fill="#B92B40" d="M99.53 21.75 A110 110 0 0 1 235.60 105.13 L243.42 103.47 L232.19 132.41 L210.16 110.54 L217.99 108.87 A92 92 0 0 0 104.19 39.13 Z"/>
+  <path class="green" fill="#007B59" d="M234.25 156.47 A110 110 0 0 1 94.01 232.62 L91.54 240.22 L72.08 216.03 L102.04 207.89 L99.57 215.50 A92 92 0 0 0 216.87 151.81 Z"/>
+  <path class="refactor" fill="#315AC7" d="M50.22 205.78 A110 110 0 0 1 54.40 46.25 L49.04 40.31 L79.72 35.56 L71.79 65.58 L66.44 59.63 A92 92 0 0 0 62.95 193.05 Z"/>
+  <path class="monogram" fill="#17233A" transform="translate(17.92 17.92) scale(.86)" fill-rule="evenodd" d="M181 66H111C77 66 58 81 58 106C58 126 74 140 102 140H143C155 140 162 144 162 151C162 159 156 165 142 165H76L59 191H142C174 191 197 175 197 150C197 128 181 113 150 113H110C98 113 93 109 93 103C93 96 99 92 112 92H164Z M126 113H158L138 123H153L117 140H87L116 126H100Z"/>
+  <path class="monogram" fill="#17233A" fill-rule="evenodd" transform="translate(280 73) scale(1.40) matrix(1 0 -.21 1 15.96 0)" d="M0 0H84L73 17H48V76H28V17H0Z M87 0H120C146 0 163 14 163 38C163 62 146 76 120 76H87Z M107 17V59H120C135 59 143 51 143 38C143 25 135 17 120 17Z M176 0H209C235 0 252 14 252 38C252 62 235 76 209 76H176Z M196 17V59H209C224 59 232 51 232 38C232 25 224 17 209 17Z"/>
+</svg>

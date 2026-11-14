@@ -1,6 +1,6 @@
 # Sociable TDD
 
-<img src="assets/logo.svg" alt="" width="144">
+<img src="assets/logo-horizontal.svg" alt="" width="340">
 
 **Fast feedback and shareable tests for agentic coding.**
 
