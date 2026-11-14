@@ -7,7 +7,9 @@ description: Use test-driven development for software features and bug fixes wit
 
 Test one promised behavior through an interface its consumer uses. A single test can exercise several real collaborators. Give each test fresh state so it runs independently. Add a test for each distinct behavior or regression. Let existing tests cover helpers introduced during refactoring.
 
-Before changing code or tests, establish what triggers the behavior, what the user or caller should observe, and which cases are in scope. Use the handoff or the user's explicit requirements for new or changed behavior. Use project requirements and tests to identify existing behavior to preserve. Ask the user to decide any open questions about expected outcomes or scope. Use [Define Behavior](../define-behavior/SKILL.md) when available and resume with its handoff. If a new behavior decision comes up during implementation, wait for the user's answer before changing the affected code or tests.
+Before changing code or tests, establish what triggers the behavior, what the user or caller should observe, and which cases are in scope. Use the handoff or the user's explicit requirements for new or changed behavior. Use project requirements and tests to identify existing behavior to preserve. Resolve any open decisions about expected outcomes or scope in [Define Behavior](../define-behavior/SKILL.md) before starting TDD. If the companion skill is unavailable, carry out the Define Behavior phase by asking the user to settle those decisions and recording their answers before starting.
+
+Once the behavior is agreed, choose the test design and implementation independently. Continue through testing, implementation, and refactoring without asking the user to approve routine choices. If you discover a decision that would change an observable outcome or expand the agreed scope, pause the affected work and return to Define Behavior. Resume TDD after the user settles the decision and the handoff is updated.
 
 For a refactor that preserves behavior, run the relevant tests before editing and confirm they pass. If coverage is missing, first add a passing test that captures the current behavior. Rerun those same tests after the refactor. For new or corrected behavior, use the cycle below.
 
@@ -15,7 +17,7 @@ For a refactor that preserves behavior, run the relevant tests before editing an
 2. **Red.** Run the test before implementation. Confirm it fails because the expected behavior is missing or incorrect. Fix setup or build failures and rerun it. If it passes, check whether the behavior already works or the test misses it.
 3. **Green.** Make the smallest correct change. Run the focused test and relevant existing tests. Preserve the agreed behavior assertions.
 4. **Refactor.** Improve the design in small steps and rerun the tests. Let the same assertions protect the behavior as internal classes and methods change.
-5. **Repeat.** Return to the scenario list. Add cases you discovered and take the next unverified behavior through the cycle.
+5. **Repeat.** Return to the scenario list. Add cases covered by the agreed behavior and take the next unverified behavior through the cycle.
 
 Assert an observable result, such as a returned value, rendered title, or durable write. Verify an interaction only when the interaction itself is part of the promise.
 

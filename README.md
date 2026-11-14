@@ -61,7 +61,7 @@ Copy both skill folders into your project. Keep each folder intact so its suppor
 | [`define-behavior`](skills/define-behavior/) | `.agents/skills/define-behavior/` | `.claude/skills/define-behavior/` |
 | [`sociable-tdd`](skills/sociable-tdd/) | `.agents/skills/sociable-tdd/` | `.claude/skills/sociable-tdd/` |
 
-Start with **Define Behavior**. It reads the relevant project files and asks about unresolved behavior. It can suggest options. You decide how the software should work and which cases are in scope. The skill records those decisions as testable scenarios. If your request includes implementation, it passes those scenarios to **Sociable TDD** in the same session. Sociable TDD handles the testing steps. If you already have agreed behavior, you can start with `$sociable-tdd` in Codex or `/sociable-tdd` in Claude Code.
+Start with **Define Behavior**. It reads the relevant project files and asks about unresolved behavior. It can suggest options. You decide how the software should work and which cases are in scope. The skill records those decisions as testable scenarios. If your request includes implementation, it passes those scenarios to **Sociable TDD** in the same session. Sociable TDD makes routine testing and implementation decisions independently. If it discovers a new question about how the software should work, it returns to Define Behavior before continuing the affected work. If you already have agreed behavior, you can start with `$sociable-tdd` in Codex or `/sociable-tdd` in Claude Code.
 
 These examples use Codex syntax. In Claude Code, replace `Use $define-behavior to` with `/define-behavior`.
 
