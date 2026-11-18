@@ -52,14 +52,34 @@ flowchart LR
 - **Spend less time rewriting tests.** Tests at the public interface can often stay as written through a refactor. People and agents can rerun the suite and get back to the feature or bug fix sooner.
 - **Spend fewer tokens on test maintenance.** Fewer fixtures and mock expectations mean less test setup for an agent to read and fewer edits for it to generate.
 
-## Install and use
+## Install
 
-Copy both skill folders into your project. Keep each folder intact so its supporting files stay with it.
+Run the command for your agent from the project root. The [Skills CLI](https://github.com/vercel-labs/skills) requires Node.js 22.20 or later.
+
+**Codex**
+
+```sh
+npx skills add mateuszszklarek/sociable-tdd-skill --skill define-behavior sociable-tdd --agent codex
+```
+
+**Claude Code**
+
+```sh
+npx skills add mateuszszklarek/sociable-tdd-skill --skill define-behavior sociable-tdd --agent claude-code
+```
+
+The CLI installs both skills for the current project. Open a fresh agent session in that project to use them.
+
+### Manual installation
+
+Copy both skill folders into the directories below. Keep each folder intact so its references and license stay with it.
 
 | Skill folder | Codex destination | Claude Code destination |
 | --- | --- | --- |
 | [`define-behavior`](skills/define-behavior/) | `.agents/skills/define-behavior/` | `.claude/skills/define-behavior/` |
 | [`sociable-tdd`](skills/sociable-tdd/) | `.agents/skills/sociable-tdd/` | `.claude/skills/sociable-tdd/` |
+
+## Use
 
 Start with **Define Behavior**. It reads the relevant project files and asks about unresolved behavior. It can suggest options. You decide how the software should work and which cases are in scope. The skill records those decisions as testable scenarios. If your request includes implementation, it passes those scenarios to **Sociable TDD** in the same session. Sociable TDD makes routine testing and implementation decisions independently. If it discovers a new question about how the software should work, it returns to Define Behavior before continuing the affected work. If you already have agreed behavior, you can start with `$sociable-tdd` in Codex or `/sociable-tdd` in Claude Code.
 
