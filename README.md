@@ -119,6 +119,10 @@ Open [ExampleApp.xcodeproj](examples/PhotoApp/ExampleApp.xcodeproj/) in Xcode 27
 - Kent Beck’s [Canon TDD](https://newsletter.kentbeck.com/p/canon-tdd)
 - Martin Fowler’s [Unit Test](https://martinfowler.com/bliki/UnitTest.html) and [Test Double](https://martinfowler.com/bliki/TestDouble.html)
 
+## Releases
+
+See the [changelog](CHANGELOG.md) for changes to both skills.
+
 ## License
 
 Copyright © 2026 Mateusz Szklarek
